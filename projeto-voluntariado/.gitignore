@@ -1,1 +1,10 @@
 /target/
+#Ficheiros eclipse
+
+.classpath
+.projects
+.settings/
+
+#Diretorio de ficheiros compilados
+
+bin/
