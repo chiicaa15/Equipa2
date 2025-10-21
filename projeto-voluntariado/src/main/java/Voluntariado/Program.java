@@ -3,10 +3,17 @@
  */
 package Voluntariado;
 
+import jakarta.persistence.*; 
 /**
  * 
  */
+@Entity
+@Table(name="Programs")
 public class Program {
+	
+	@Id
+	@Column(name= "program_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String nomeP;
 	private String partner;
 	private String description;
