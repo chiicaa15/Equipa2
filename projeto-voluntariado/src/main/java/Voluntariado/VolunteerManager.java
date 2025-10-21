@@ -17,6 +17,8 @@ public class VolunteerManager extends User {
 		super(nome, email, password);
 	}
 	
-	
+	public String toString() {
+		return super.toString();
+	}
 
 }

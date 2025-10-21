@@ -26,6 +26,11 @@ public class Student extends User {
 	public int getNum() {
 		return num;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + ", Student [num=" + num + "]";
+	}
 	
 	
 

@@ -102,7 +102,12 @@ public class Program {
 	public void setContact(int contact) {
 		this.contact = contact;
 	}
+	@Override
+	public String toString() {
+		return "Program [nomeP=" + nomeP + ", partner=" + partner + ", description=" + description + ", type=" + type
+				+ ", location=" + location + ", contact=" + contact + "]";
+	}
 	
-	
+
 
 }
