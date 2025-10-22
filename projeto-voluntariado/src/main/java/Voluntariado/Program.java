@@ -15,25 +15,19 @@ public class Program {
 	@Column(name= "program_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String nomeP;
-	private String partner;
 	private String description;
-	private String type;
 	private String location;
 	private int contact;
 	/**
 	 * @param nomeP
-	 * @param partner
 	 * @param description
-	 * @param type
 	 * @param location
 	 * @param contact
 	 */
-	public Program(String nomeP, String partner, String description, String type, String location, int contact) {
+	public Program(String nomeP, String description, String location, int contact) {
 		super();
 		this.nomeP = nomeP;
-		this.partner = partner;
 		this.description = description;
-		this.type = type;
 		this.location = location;
 		this.contact = contact;
 	}
@@ -50,18 +44,6 @@ public class Program {
 		this.nomeP = nomeP;
 	}
 	/**
-	 * @return the partner
-	 */
-	public String getPartner() {
-		return partner;
-	}
-	/**
-	 * @param partner the partner to set
-	 */
-	public void setPartner(String partner) {
-		this.partner = partner;
-	}
-	/**
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -72,18 +54,6 @@ public class Program {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
 	}
 	/**
 	 * @return the location
@@ -111,8 +81,7 @@ public class Program {
 	}
 	@Override
 	public String toString() {
-		return "Program [nomeP=" + nomeP + ", partner=" + partner + ", description=" + description + ", type=" + type
-				+ ", location=" + location + ", contact=" + contact + "]";
+		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", contact=" + contact + "]";
 	}
 	
 
