@@ -2,12 +2,17 @@
  * 
  */
 package Voluntariado;
-
+import jakarta.persistence.*; 
 /**
  * 
  */
+@Entity
+@Table (name="users")
 public class User {
-	private String nome;
+	@Id
+	@Column (name="user_id")
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private String name;
 	private String email;
 	private String password;
 	/**
@@ -15,9 +20,9 @@ public class User {
 	 * @param email
 	 * @param password
 	 */
-	public User(String nome, String email, String password) {
+	public User(String name, String email, String password) {
 		super();
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 		this.password = password;
 	}
@@ -34,10 +39,10 @@ public class User {
 		this.password = password;
 	}
 	/**
-	 * @return the nome
+	 * @return the name
 	 */
 	public String getNome() {
-		return nome;
+		return name;
 	}
 	/**
 	 * @return the email
@@ -47,7 +52,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [nome=" + nome + ", email=" + email + ", password=" + password + "]";
+		return "User [name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
 	
 	

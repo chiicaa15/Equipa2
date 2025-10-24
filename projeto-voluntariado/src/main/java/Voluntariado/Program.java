@@ -18,19 +18,35 @@ public class Program {
 	private String description;
 	private String location;
 	private int contact;
+	private int vagas;
 	/**
 	 * @param nomeP
 	 * @param description
 	 * @param location
 	 * @param contact
 	 */
-	public Program(String nomeP, String description, String location, int contact) {
-		super();
+	public Program(String nomeP, String description, String location, int contact, int vagas) {
 		this.nomeP = nomeP;
 		this.description = description;
 		this.location = location;
 		this.contact = contact;
+		this.vagas= vagas;
 	}
+	
+	/**
+	 * @return the vagas
+	 */
+	public int getVagas() {
+		return vagas;
+	}
+
+	/**
+	 * @param vagas the vagas to set
+	 */
+	public void setVagas(int vagas) {
+		this.vagas = vagas;
+	}
+
 	/**
 	 * @return the nomeP
 	 */
@@ -81,7 +97,7 @@ public class Program {
 	}
 	@Override
 	public String toString() {
-		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", contact=" + contact + "]";
+		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", vagas="+ vagas +", contact=" + contact + "]";
 	}
 	
 
