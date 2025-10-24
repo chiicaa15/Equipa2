@@ -53,6 +53,14 @@ public class ProgramManager {
 		
 		//System.out.print("U sucessfuly applied to the program");
 	//}
+	
+	public void searchProgram() {
+		
+	}
+	
+	public void printProgram() {
+		
+	}
 }
 
     
