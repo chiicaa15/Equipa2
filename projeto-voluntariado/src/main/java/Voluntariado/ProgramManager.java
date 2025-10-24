@@ -45,5 +45,14 @@ public class ProgramManager {
 	public void delete() {
 		
 	}
+	
+	//public void applyPrograms() {
+		//if (program != closed) {
+			
+		//}
+		
+		//System.out.print("U sucessfuly applied to the program");
+	//}
 }
 
+    
