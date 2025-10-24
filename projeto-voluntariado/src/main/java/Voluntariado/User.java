@@ -8,12 +8,18 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table (name="users")
+@Inheritance (strategy = InheritanceType.SINGLE_TABLE) 
+@DiscriminatorColumn (name = "user_type", discriminatorType = 
+DiscriminatorType.STRING) 
 public class User {
 	@Id
 	@Column (name="user_id")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	
 	private String name;
+	@Column (nullable = false)
 	private String email;
+	@Column (nullable = false)
 	private String password;
 	/**
 	 * @param nome
