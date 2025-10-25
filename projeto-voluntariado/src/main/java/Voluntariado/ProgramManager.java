@@ -12,6 +12,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import util.HibernateUtil;
 import jakarta.transaction.Transaction;
 import org.hibernate.query.Query;
+import java.util.List;
 
 /**
  * 
