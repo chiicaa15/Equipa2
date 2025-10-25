@@ -31,7 +31,7 @@ name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         if it does not already exist. 
     --> 
     <property name="connection.url"> 
-    jdbc:mysql://localhost:3306/hibernateDemo?createDatabaseIfNotExist=true 
+    jdbc:mysql://localhost:3306/voluntariado?createDatabaseIfNotExist=true 
     </property> 
      
     <!-- 
@@ -71,7 +71,8 @@ name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
       List all annotated entity classes used by Hibernate. 
       Each class must include its full package name. 
     -->         
-    <mapping class="upt.lp.projeto.User" /> 
-    <mapping class="upt.lp.projeto.Program" /> 
+    <mapping class="Voluntariado.User" /> 
+    <mapping class="Voluntariado.Program" /> 
+    <mapping class="Voluntariado.Student" /> 
   </session-factory> 
  </hibernate-configuration>
