@@ -11,6 +11,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import util.HibernateUtil;
 import jakarta.transaction.Transaction;
+import org.hibernate.query.Query;
+
 /**
  * 
  */
@@ -72,6 +74,15 @@ public class ProgramManager {
 	}
 	public void delete() {
 		
+	}
+	
+	public void searchPrograms() {
+	}
+	
+	public void printPrograms() {
+		for (User u : users) {
+            System.out.println(u);
+        }
 	}
 }
 
