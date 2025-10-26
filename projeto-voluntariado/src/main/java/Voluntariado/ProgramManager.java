@@ -74,7 +74,7 @@ public class ProgramManager {
 		
 	}
 	
-	public void listarTProgramas() {
+	public List<Program> listarTProgramas() {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		
 		try (Session session = factory.openSession()){
