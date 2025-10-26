@@ -2,25 +2,52 @@
  * 
  */
 package Voluntariado;
-
+import jakarta.persistence.*; 
 /**
  * 
  */
+@Entity
+@Table (name="users")
+@Inheritance (strategy = InheritanceType.SINGLE_TABLE) 
+@DiscriminatorColumn (name = "user_type", discriminatorType = 
+DiscriminatorType.STRING) 
+@DiscriminatorValue("Manager")
 public class User {
-	private String nome;
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column (name="user_id")
+	private long id;
+	
+	private String name;
+	@Column (nullable = false)
 	private String email;
+	@Column (nullable = false)
 	private String password;
 	/**
 	 * @param nome
 	 * @param email
 	 * @param password
 	 */
-	public User(String nome, String email, String password) {
+	
+	public User() {
+		
+	}
+	
+	public User(String name, String email, String password) {
 		super();
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 		this.password = password;
 	}
+	
+	
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
 	/**
 	 * @return the password
 	 */
@@ -34,10 +61,10 @@ public class User {
 		this.password = password;
 	}
 	/**
-	 * @return the nome
+	 * @return the name
 	 */
 	public String getNome() {
-		return nome;
+		return name;
 	}
 	/**
 	 * @return the email
@@ -45,11 +72,11 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
+
 	@Override
 	public String toString() {
-		return "User [nome=" + nome + ", email=" + email + ", password=" + password + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
-	
 	
 	
 	

@@ -18,31 +18,47 @@ public class Program {
 	private String description;
 	private String location;
 	private int contact;
-	private Type tipo;
-	
+	private Type type;
+	private int vagas;
 	
 	/**
 	 * @param nomeP
 	 * @param description
 	 * @param location
 	 * @param contact
-	 * @param tipo
+	 * @param type
 	 */
-	public Program(String nomeP, String description, String location, int contact, Type tipo) {
-		super();
+
+	public Program(String nomeP, String description, String location, int contact, Type type, int vagas) {
+
 		this.nomeP = nomeP;
 		this.description = description;
 		this.location = location;
 		this.contact = contact;
-		this.tipo = tipo;
+		this.type = type;
+		this.vagas= vagas;
 	}
-	
 	
 	/**
 	 * @return the tipo
 	 */
 	public Type getTipo() {
-		return tipo;
+		return type;
+	}
+
+
+	/**
+	 * @return the vagas
+	 */
+	public int getVagas() {
+		return vagas;
+	}
+
+	/**
+	 * @param vagas the vagas to set
+	 */
+	public void setVagas(int vagas) {
+		this.vagas = vagas;
 	}
 
 
@@ -104,7 +120,11 @@ public class Program {
 	
 	@Override
 	public String toString() {
-		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", contact=" + contact + "]";
+		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", vagas="+ vagas +", contact=" + contact + "]";
+	}
+	
+	public Program() {
+		
 	}
 	
 }

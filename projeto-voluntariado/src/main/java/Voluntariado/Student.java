@@ -2,10 +2,12 @@
  * 
  */
 package Voluntariado;
-
+import jakarta.persistence.*; 
 /**
  * 
  */
+@Entity 
+@DiscriminatorValue("Student")
 public class Student extends User {
 	private int num;
 
@@ -15,6 +17,11 @@ public class Student extends User {
 	 * @param password
 	 * @param num
 	 */
+	
+	public Student() {
+		
+	}
+	
 	public Student(String nome, String email, String password, int num) {
 		super(nome, email, password);
 		this.num = num;
