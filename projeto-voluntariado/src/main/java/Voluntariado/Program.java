@@ -18,72 +18,93 @@ public class Program {
 	private String description;
 	private String location;
 	private int contact;
+	private Type tipo;
+	
+	
 	/**
 	 * @param nomeP
 	 * @param description
 	 * @param location
 	 * @param contact
+	 * @param tipo
 	 */
-	public Program(String nomeP, String description, String location, int contact) {
+	public Program(String nomeP, String description, String location, int contact, Type tipo) {
 		super();
 		this.nomeP = nomeP;
 		this.description = description;
 		this.location = location;
 		this.contact = contact;
+		this.tipo = tipo;
 	}
+	
+	
+	/**
+	 * @return the tipo
+	 */
+	public Type getTipo() {
+		return tipo;
+	}
+
+
 	/**
 	 * @return the nomeP
 	 */
 	public String getNomeP() {
 		return nomeP;
 	}
+	
 	/**
 	 * @param nomeP the nomeP to set
 	 */
 	public void setNomeP(String nomeP) {
 		this.nomeP = nomeP;
 	}
+	
 	/**
 	 * @return the description
 	 */
 	public String getDescription() {
 		return description;
 	}
+	
 	/**
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	/**
 	 * @return the location
 	 */
 	public String getLocation() {
 		return location;
 	}
+	
 	/**
 	 * @param location the location to set
 	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
 	/**
 	 * @return the contact
 	 */
 	public int getContact() {
 		return contact;
 	}
+	
 	/**
 	 * @param contact the contact to set
 	 */
 	public void setContact(int contact) {
 		this.contact = contact;
 	}
+	
 	@Override
 	public String toString() {
 		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", contact=" + contact + "]";
 	}
 	
-
-
 }
