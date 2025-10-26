@@ -24,16 +24,6 @@ public class ProgramManager {
 		
 	}
 	
-	/*
-	 * public boolean login (String nome, String email, String password ) {
-	 * 
-	 * 
-	 * return false;
-	 * 
-	 * }
-	 */
-	
-	
 	
 	public void criarPrograma (String nomeP, String description, String location, int contact, String type) {
 		
