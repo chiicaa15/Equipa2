@@ -88,8 +88,7 @@ public class ProgramManager {
 	
 	public List<Program> searchProgram(String type, String Partner) {
 	 try (Session session = sessionFactory.openSession()) {
-		 Query<Program> query;
-	}
+		 String hql = "FROM Program p WHERE 1=1";
 	
 	public void printProgram() {
 		
