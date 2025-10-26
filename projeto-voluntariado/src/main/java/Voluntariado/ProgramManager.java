@@ -95,6 +95,18 @@ public class ProgramManager {
 		 if (partner != null) {
 	            hql += " AND p.partner = :partner";
 	            }
+		 
+		 Query<Program> query = session.createQuery(hql, Program.class);
+		 
+		 if (type != null && !type.isEmpty()) {
+	            query.setParameter("type", type);
+	            }
+	     if (partner != null) {
+	            query.setParameter("partner", partner);
+	            }
+	 }
+	 
+    }
 	
 	public void printProgram() {
 		
