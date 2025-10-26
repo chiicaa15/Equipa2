@@ -77,15 +77,6 @@ public class ProgramManager {
 		
 	}
 	
-<<<<<<< HEAD
-	//public void applyPrograms() {
-		//if (program != closed) {
-			
-		//}
-		
-		//System.out.print("U sucessfuly applied to the program");
-	//}
-	
 	public List<Program> searchProgram(String type, String Partner) {
 	 try (Session session = sessionFactory.openSession()) {
 		 String hql = "FROM Program p WHERE 1=1";
@@ -104,11 +95,35 @@ public class ProgramManager {
 	     if (partner != null) {
 	            query.setParameter("partner", partner);
 	            }
-	 }
+	     return query.list();
+
+	   }
+}
 	 
-    }
 	
-	public void printProgram() {
+	public void printPrograms() {
+	    try (Session session = sessionFactory.openSession()) {
+	        session.beginTransaction();
+
+	        System.out.println("\n=== Lista de Todos os Programas ===");
+	        List<Program> programs = session.createQuery("from Program", Program.class).list();
+
+	        for (Program p : programs) {
+	            System.out.println(p);
+	        }
+
+	        String nameParam = "Limpeza de Praia"; 
+	        System.out.println("\n=== Programas com nome: " + nameParam + " ===");
+	        Query<Program> query = session.createQuery(
+	            "from Program p where p.nomeP = :name", Program.class);
+	        query.setParameter("name", nameParam);
+	        List<Program> result = query.list();
+
+	        for (Program r : result) {
+	            System.out.println(r);
+	        }
+
+	}
 		
 
     
