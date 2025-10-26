@@ -5,6 +5,8 @@ package Voluntariado;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session; 
 import org.hibernate.SessionFactory; 
 import org.hibernate.boot.MetadataSources; 
@@ -27,7 +29,19 @@ public class ProgramManager {
             tx = session.beginTransaction();
             session.persist(user);
             tx.commit();
-            System.out.println("User registado com sucesso: " + user);
+            System.out.println("Utilizador registado com sucesso: " + user);
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+	}
+	public void saveType(Type type) {
+		Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            session.persist(type);
+            tx.commit();
+            System.out.println("Tipo de Programa registado: " + type);
         } catch (Exception e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
@@ -44,6 +58,43 @@ public class ProgramManager {
 		saveUser(novoStudent);
 	}
 	
+	public void adicionarType(Type type) {
+		saveType(type);
+	}
+	
+	public void printType() {
+		 try (Session session = sessionFactory.openSession()) {
+		        session.beginTransaction();
+
+		        System.out.println("Lista de Tipos:");
+		        List<Type> tipos = session.createQuery("from Type", Type.class).list();
+		        for (Type t : tipos) {
+		            System.out.println(t);
+		        }
+
+		        session.getTransaction().commit();
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+	}
+	public void pesquisarTipo(String tipo) {
+		try (Session session = sessionFactory.openSession()) {
+	        session.beginTransaction();
+
+	        System.out.println("\n=== Find Type by name ===");
+	        Query<Type> query = session.createQuery("from Type t where t.type = :name", Type.class);
+	        query.setParameter("name", tipo);
+	        List<Type> result = query.list();
+	        for (Type t : result) {
+	            System.out.println(t);
+	        }
+
+	        session.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	public void exit() {
 		
 	}
@@ -52,10 +103,8 @@ public class ProgramManager {
 		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		
-		
-		
 	}
+	
 	public void read() {
 		
 	}

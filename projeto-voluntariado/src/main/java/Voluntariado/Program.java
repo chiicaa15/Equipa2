@@ -8,31 +8,48 @@ import jakarta.persistence.*;
  * 
  */
 @Entity
-@Table(name="Programs")
+@Table(name="Programas")
 public class Program {
 	
 	@Id
-	@Column(name= "program_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	private String nomeP;
 	private String description;
 	private String location;
 	private int contact;
 	private int vagas;
+	
+	@ManyToOne
+	@JoinColumn(name="tipo_id")
+	private Type type;
 	/**
 	 * @param nomeP
 	 * @param description
 	 * @param location
 	 * @param contact
 	 */
-	public Program(String nomeP, String description, String location, int contact, int vagas) {
+	public Program() {
+		
+	}
+	
+	public Program(String nomeP, String description, String location, int contact, int vagas, Type type) {
 		this.nomeP = nomeP;
 		this.description = description;
 		this.location = location;
 		this.contact = contact;
 		this.vagas= vagas;
+		this.type=type;
 	}
 	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
 	/**
 	 * @return the vagas
 	 */
@@ -95,10 +112,29 @@ public class Program {
 	public void setContact(int contact) {
 		this.contact = contact;
 	}
+	
+	
+	/**
+	 * @return the type
+	 */
+	public Type getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
-		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", vagas="+ vagas +", contact=" + contact + "]";
+		return "Program [id=" + id + ", nomeP=" + nomeP + ", description=" + description + ", location=" + location
+				+ ", contact=" + contact + ", vagas=" + vagas + ", type=" + type + "]";
 	}
+
+	
 	
 
 

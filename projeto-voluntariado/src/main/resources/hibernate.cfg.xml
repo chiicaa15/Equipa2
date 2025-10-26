@@ -74,5 +74,6 @@ name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <mapping class="Voluntariado.User" /> 
     <mapping class="Voluntariado.Program" /> 
     <mapping class="Voluntariado.Student" /> 
+    <mapping class="Voluntariado.Type" />
   </session-factory> 
  </hibernate-configuration>
