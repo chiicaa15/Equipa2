@@ -91,7 +91,10 @@ public class ProgramManager {
 		 String hql = "FROM Program p WHERE 1=1";
 		 if (type != null && !type.isEmpty()) {
 			    hql += " AND p.type = :type";
-			}
+			    }
+		 if (partner != null) {
+	            hql += " AND p.partner = :partner";
+	            }
 	
 	public void printProgram() {
 		
