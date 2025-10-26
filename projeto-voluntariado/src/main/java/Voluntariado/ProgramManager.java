@@ -2,16 +2,34 @@
  * 
  */
 package Voluntariado;
+
+import java.util.ArrayList;
 import org.hibernate.Session; 
 import org.hibernate.SessionFactory; 
 import org.hibernate.boot.MetadataSources; 
 import org.hibernate.boot.registry.StandardServiceRegistry; 
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import util.HibernateUtil;
+import jakarta.transaction.Transaction;
+import org.hibernate.query.Query;
+import java.util.List;
+
 /**
  * 
  */
 public class ProgramManager {
 	public SessionFactory sessionFactory;
+	public ArrayList<User>users= new ArrayList();
+	
+	public void adicionarUser(User novoUser) {
+		users.add(novoUser);
+		saveUser(novoUser);
+		
+	}
+	public void adicionarStudent(Student novoStudent) {
+		users.add(novoStudent);
+		saveUser(novoStudent);
+	}
 	
 	public void setup() {
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
@@ -22,6 +40,19 @@ public class ProgramManager {
 		} catch (Exception ex) {
 			StandardServiceRegistryBuilder.destroy(registry);
 		}
+	}
+	public void saveUser() {
+		Transaction tx = null; 
+		try (Session session =HibernateUtil.getSessionFactory().openSession()) { 
+		            tx = session.beginTransaction(); 
+		            session.persist(user); 
+		            tx.commit(); 
+		            System.out.println("User registado com secesso: " + user); 
+		        } catch (Exception e) { 
+		            if (tx != null) tx.rollback(); 
+		            e.printStackTrace(); 
+		        } 
+		    }
 	}
 	
 	public void exit() {
@@ -46,6 +77,7 @@ public class ProgramManager {
 		
 	}
 	
+<<<<<<< HEAD
 	//public void applyPrograms() {
 		//if (program != closed) {
 			
@@ -54,13 +86,12 @@ public class ProgramManager {
 		//System.out.print("U sucessfuly applied to the program");
 	//}
 	
-	public void searchProgram() {
-		
+	public List<Program> searchProgram(String type, String Partner) {
+	 try (Session session = sessionFactory.openSession()) {
+	        
 	}
 	
 	public void printProgram() {
 		
-	}
-}
 
     
