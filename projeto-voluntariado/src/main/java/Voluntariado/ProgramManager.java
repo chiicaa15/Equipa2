@@ -89,6 +89,9 @@ public class ProgramManager {
 	public List<Program> searchProgram(String type, String Partner) {
 	 try (Session session = sessionFactory.openSession()) {
 		 String hql = "FROM Program p WHERE 1=1";
+		 if (type != null && !type.isEmpty()) {
+			    hql += " AND p.type = :type";
+			}
 	
 	public void printProgram() {
 		
