@@ -6,6 +6,8 @@ package Voluntariado;
 import java.util.ArrayList;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import jakarta.transaction.Transaction;
 
@@ -70,6 +72,20 @@ public class ProgramManager {
 		}
 		
 		
+	}
+	
+	public void listarTProgramas() {
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		
+		try (Session session = factory.openSession()){
+			session.beginTransaction();
+			
+			List<Program> programs = session.createQuery("from Program", Program.class).list();
+			
+			session.getTransaction().commit();
+			
+			return programs;
+		}
 	}
 	
 }
