@@ -31,6 +31,11 @@ public class ProgramManager {
 	}
 	
 	
+	public ProgramManager() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public void criarPrograma (String nomeP, String description, String location, int contact, String type, int vagas) {
 		
 		//verificar se está vazio ou não
@@ -52,12 +57,14 @@ public class ProgramManager {
 			
 			if (type1 == null) {
 				type1 = new Type(); //typeType pra usar o valor
+				type1.setType(type);
 				session.persist(type1);
 			}
 			
 			
 			//criação do programa e adicionar o programa a um dado type
 			Program p = new Program (nomeP, description, location, contact, type1, vagas);
+			type1.addProgram(p);
 			session.persist(p);
 			programs.add(p);
 			

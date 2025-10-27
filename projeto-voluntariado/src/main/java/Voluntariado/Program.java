@@ -12,12 +12,16 @@ import jakarta.persistence.*;
 public class Program {
 	
 	@Id
-	@Column(name= "program_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name= "program_id")
+	private Long id;
+	@Column(nullable = false)
 	private String nomeP;
 	private String description;
 	private String location;
 	private int contact;
+	@ManyToOne
+	@JoinColumn(name="tipo_id", nullable = false) //foreign key
 	private Type type;
 	private int vagas;
 	
@@ -39,6 +43,43 @@ public class Program {
 		this.vagas= vagas;
 	}
 	
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	/**
+	 * @return the type
+	 */
+	public Type getType() {
+		return type;
+	}
+
+
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+
+
 	/**
 	 * @return the tipo
 	 */

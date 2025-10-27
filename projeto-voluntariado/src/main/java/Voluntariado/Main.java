@@ -18,7 +18,7 @@ public class Main {
 	
 		boolean continuar= true;
 		int opcao;
-		while (continuar=true) {
+		while (continuar) {
 			System.out.println("1- Criar conta como gestor");
 			System.out.println("2- Criar conta como estudante");
 			System.out.println("3- Fazer login");
@@ -64,16 +64,17 @@ public class Main {
 				
 				System.out.println("Insira o contacto responsável: ");
 				int contact = input.nextInt();
+				input.nextLine();
 				
 				System.out.println("Insira a que tipo o programa pertence: ");
-				Type type= input.nextLine();
+				String typeN= input.nextLine();
 				
 				System.out.println("Insira as vagas que o programa tem: ");
 				int vagas = input.nextInt();
 				
 				//chamar o método
-				Program p = new Program(nomeP, description, location, contact, type, vagas);
-				manager.criarPrograma(p);
+				manager.criarPrograma(nomeP, description, location, contact, typeN, vagas);
+				break;
 				
 				
 			case 5:
