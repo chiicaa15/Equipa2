@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?> 
  <!DOCTYPE hibernate-configuration PUBLIC 
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"> 
+        "-//Hibernate/Hibernate Configuration DTD 6.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-configuration-6.0.dtd"> 
     <!--  
    Root element of the Hibernate configuration file. 
   It defines all settings needed to create the SessionFactory, 
@@ -75,5 +75,6 @@ name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <mapping class="Voluntariado.User" /> 
     <mapping class="Voluntariado.Program" /> 
     <mapping class="Voluntariado.Student" /> 
+    <mapping class="Voluntariado.Type" />
   </session-factory> 
  </hibernate-configuration>
