@@ -5,17 +5,99 @@ package Voluntariado;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session; 
 import org.hibernate.SessionFactory; 
 import org.hibernate.boot.MetadataSources; 
 import org.hibernate.boot.registry.StandardServiceRegistry; 
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
 /**
  * 
  */
 public class ProgramManager {
 	public SessionFactory sessionFactory;
 	public ArrayList<User>users= new ArrayList();
+	public ArrayList<Program>programs = new ArrayList();
+	
+	
+	
+	public ProgramManager(ArrayList<Program> programs, ArrayList<Student> students, ArrayList<User> users) {
+		super();
+		
+	}
+	
+	
+	public ProgramManager() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public void criarPrograma (String nomeP, String description, String location, int contact, String type, int vagas) {
+		
+		//verificar se está vazio ou não
+		if (nomeP.isEmpty() || description.isEmpty() || location.isEmpty() || type.isEmpty()) {
+			System.out.println("Todos os campos têm de ser preenchidos!");
+			return;
+		}
+			
+		
+		Transaction tx = null; //tx guarda a transação
+		try (Session session = HibernateUtil.getSessionFactory().openSession()){ //abre uma nova sessão com b.dados e guarda em session
+			tx = session.beginTransaction(); //começa
+			
+			
+			//verificar se o tipo existe, se não cria
+			Query<Type> query = session.createQuery("from Type where type = :type", Type.class);
+			query.setParameter("type", type);
+			Type type1 = query.uniqueResult();
+			
+			if (type1 == null) {
+				type1 = new Type(); //typeType pra usar o valor
+				type1.setType(type);
+				session.persist(type1);
+			}
+			
+			
+			//criação do programa e adicionar o programa a um dado type
+			Program p = new Program (nomeP, description, location, contact, type1, vagas);
+			type1.addProgram(p);
+			session.persist(p);
+			programs.add(p);
+			
+			tx.commit();
+			
+			System.out.println("O programa foi criado com sucesso!");
+		}
+		
+		catch (Exception e) {
+			
+			
+			//se algo deu errado, nada irá ser salvo
+			if (tx != null) tx.rollback(); 
+			e.printStackTrace();
+			System.out.println("Programa não criado por: " + e.getMessage());} //mostra os motivos de não ter sido criado
+		}
+		
+
+	
+	public List listarTProgramas() {
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		
+		try (Session session = factory.openSession()){
+			session.beginTransaction();
+			
+			List programs = session.createQuery("from Program", Program.class).list();
+			
+			session.getTransaction().commit();
+			
+			return programs;
+		}
+	}
+	
 	
 	public void setup() {
 		 sessionFactory = HibernateUtil.getSessionFactory();
@@ -65,5 +147,13 @@ public class ProgramManager {
 	public void delete() {
 		
 	}
+
+
+	public void criarPrograma(Program p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }
 
