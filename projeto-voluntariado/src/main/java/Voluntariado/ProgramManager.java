@@ -153,6 +153,54 @@ public class ProgramManager {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public List<Program> searchProgram(String type, String Partner) {
+		 try (Session session = sessionFactory.openSession()) {
+			 String hql = "FROM Program p WHERE 1=1";
+			 if (type != null && !type.isEmpty()) {
+				    hql += " AND p.type = :type";
+				    }
+			 if (partner != null) {
+		            hql += " AND p.partner = :partner";
+		            }
+			 
+			 Query<Program> query = session.createQuery(hql, Program.class);
+			 
+			 if (type != null && !type.isEmpty()) {
+		            query.setParameter("type", type);
+		            }
+		     if (partner != null) {
+		            query.setParameter("partner", partner);
+		            }
+		     return query.list();
+
+		   }
+	}
+
+
+	public void printPrograms() {
+		    try (Session session = sessionFactory.openSession()) {
+		        session.beginTransaction();
+
+		        System.out.println("\n=== Lista de Todos os Programas ===");
+		        List<Program> programs = session.createQuery("from Program", Program.class).list();
+
+		        for (Program p : programs) {
+		            System.out.println(p);
+		        }
+
+		        String nameParam = "Limpeza de Praia"; 
+		        System.out.println("\n=== Programas com nome: " + nameParam + " ===");
+		        Query<Program> query = session.createQuery(
+		            "from Program p where p.nomeP = :name", Program.class);
+		        query.setParameter("name", nameParam);
+		        List<Program> result = query.list();
+
+		        for (Program r : result) {
+		            System.out.println(r);
+		        }
+
+		}
 
 
 }
