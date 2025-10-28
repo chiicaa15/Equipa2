@@ -38,16 +38,18 @@ public class ProgramManager {
 
 	public void criarPrograma (String nomeP, String description, String location, int contact, String type, int vagas) {
 		
-		//verificar se está vazio ou não
-		if (nomeP.isEmpty() || description.isEmpty() || location.isEmpty() || type.isEmpty()) {
-			System.out.println("Todos os campos têm de ser preenchidos!");
-			return;
-		}
+		
 			
 		
 		Transaction tx = null; //tx guarda a transação
 		try (Session session = HibernateUtil.getSessionFactory().openSession()){ //abre uma nova sessão com b.dados e guarda em session
 			tx = session.beginTransaction(); //começa
+			
+			//verificar se está vazio ou não
+			if (nomeP.isEmpty() || description.isEmpty() || location.isEmpty() || type.isEmpty()) {
+				System.out.println("Todos os campos têm de ser preenchidos!\n");
+				return;
+			}
 			
 			
 			//verificar se o tipo existe, se não cria
@@ -84,7 +86,7 @@ public class ProgramManager {
 		
 
 	
-	public List listarTProgramas() {
+	public List imprimirProgramas() {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		
 		try (Session session = factory.openSession()){

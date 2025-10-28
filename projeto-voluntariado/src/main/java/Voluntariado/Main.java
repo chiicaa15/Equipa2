@@ -2,6 +2,7 @@
  * 
  */
 package Voluntariado;
+import java.util.List;
 import java.util.Scanner;
 
 import org.hibernate.Session;
@@ -21,9 +22,10 @@ public class Main {
 		while (continuar) {
 			System.out.println("1- Criar conta como gestor");
 			System.out.println("2- Criar conta como estudante");
-			System.out.println("3- Fazer login");
-			System.out.println("4-Criar programa");
-			System.out.println("5-Sair");
+			System.out.println("3- Criar programa");
+			System.out.println("4- Imprimir todos os programas");
+			System.out.println("5- Procurar");
+			System.out.println("6- Sair");
 			
 			opcao= input.nextInt();
 			input.nextLine();
@@ -76,8 +78,29 @@ public class Main {
 				manager.criarPrograma(nomeP, description, location, contact, typeN, vagas);
 				break;
 				
+			case 4:
+				List <Program> list = manager.imprimirProgramas();
 				
-			case 5:
+				if (list.isEmpty()) {
+					System.out.println("De momento não existe nenhum programa.");
+				}
+				
+				else {
+					for (Program p : list) {
+						System.out.println("\n");
+						System.out.println("Nome: " + p.getNomeP());
+						System.out.println("Descrição: " + p.getDescription());
+						System.out.println("Localização: " + p.getLocation());
+						System.out.println("Contacto: " + p.getContact());
+						System.out.println("Tipo: " + p.getTipo());
+						System.out.println("Número de vagas: " + p.getVagas());
+						System.out.println("\n");
+					}
+				}
+				break;
+				
+				
+			case 6:
 				continuar=false;
 				break;
 				

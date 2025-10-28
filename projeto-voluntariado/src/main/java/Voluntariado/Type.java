@@ -12,9 +12,9 @@ import jakarta.persistence.*;
  * 
  */
 
-@Entity
-@Table (name = "Tipo")
 
+@Table (name = "Tipo")
+@Entity
 public class Type {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,4 +72,12 @@ public class Type {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String toString() {
+		return "" + type + "";
+	}
+	
+	
+	
 }
