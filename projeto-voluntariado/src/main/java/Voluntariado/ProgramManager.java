@@ -154,54 +154,56 @@ public class ProgramManager {
 		
 	}
 	
-	public List<Program> searchProgram(String type, String Partner) {
-		 try (Session session = sessionFactory.openSession()) {
-			 String hql = "FROM Program p WHERE 1=1";
-			 if (type != null && !type.isEmpty()) {
-				    hql += " AND p.type = :type";
-				    }
-			 if (partner != null) {
-		            hql += " AND p.partner = :partner";
-		            }
-			 
-			 Query<Program> query = session.createQuery(hql, Program.class);
-			 
-			 if (type != null && !type.isEmpty()) {
-		            query.setParameter("type", type);
-		            }
-		     if (partner != null) {
-		            query.setParameter("partner", partner);
-		            }
-		     return query.list();
+	public List<Program> searchProgram(String typeName, String partnerName) {
+	    try (Session session = sessionFactory.openSession()) {
+
+	        String hql = "FROM Program p";
+	        boolean hasCondition = false;
+
+	        if (typeName != null && !typeName.isEmpty()) {
+	            hql += " WHERE p.type.type = :typeName";
+	            hasCondition = true;
+	        }
+
+	        if (partnerName != null && !partnerName.isEmpty()) {
+	            if (hasCondition) {
+	                hql += " AND p.partner.namePartner = :partnerName";
+	            } else {
+	                hql += " WHERE p.partner.namePartner = :partnerName";
+	                hasCondition = true;
+	            }
+	        }
+
+	        Query<Program> query = session.createQuery(hql, Program.class);
+
+	        if (typeName != null && !typeName.isEmpty()) {
+	            query.setParameter("typeName", typeName);
+	        }
+	        if (partnerName != null && !partnerName.isEmpty()) {
+	            query.setParameter("partnerName", partnerName);
+	        }
+
+	        return query.list();
+
 
 		   }
 	}
 
 
 	public void printPrograms() {
-		    try (Session session = sessionFactory.openSession()) {
-		        session.beginTransaction();
+	    try (Session session = sessionFactory.openSession()) {
+	        List<Program> programs = session.createQuery("from Program", Program.class).list();
 
-		        System.out.println("\n=== Lista de Todos os Programas ===");
-		        List<Program> programs = session.createQuery("from Program", Program.class).list();
-
-		        for (Program p : programs) {
-		            System.out.println(p);
-		        }
-
-		        String nameParam = "Limpeza de Praia"; 
-		        System.out.println("\n=== Programas com nome: " + nameParam + " ===");
-		        Query<Program> query = session.createQuery(
-		            "from Program p where p.nomeP = :name", Program.class);
-		        query.setParameter("name", nameParam);
-		        List<Program> result = query.list();
-
-		        for (Program r : result) {
-		            System.out.println(r);
-		        }
-
+	        System.out.println("\n=== Lista de Todos os Programas ===");
+	        if (programs.isEmpty()) {
+	            System.out.println("Nenhum programa encontrado.");
+	        } else {
+	            for (Program p : programs) {
+	                System.out.println(p);
+	            }
+	        }
 		}
-
-
+	}
 }
+
 
