@@ -19,6 +19,9 @@ public class Program {
 	private String description;
 	private String location;
 	private int contact;
+	@ManyToOne
+	@JoinColumn(name="tipo_id", nullable = false) //foreign key
+	private Type type;
 	private int vagas;
 	
 	@ManyToOne
@@ -29,6 +32,7 @@ public class Program {
 	 * @param description
 	 * @param location
 	 * @param contact
+	 * @param type
 	 */
 	public Program() {
 		
@@ -42,13 +46,13 @@ public class Program {
 		this.vagas= vagas;
 	}
 	
+	
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
 	}
-
 	/**
 	 * @return the vagas
 	 */
@@ -63,48 +67,56 @@ public class Program {
 		this.vagas = vagas;
 	}
 
+
 	/**
 	 * @return the nomeP
 	 */
 	public String getNomeP() {
 		return nomeP;
 	}
+	
 	/**
 	 * @param nomeP the nomeP to set
 	 */
 	public void setNomeP(String nomeP) {
 		this.nomeP = nomeP;
 	}
+	
 	/**
 	 * @return the description
 	 */
 	public String getDescription() {
 		return description;
 	}
+	
 	/**
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	/**
 	 * @return the location
 	 */
 	public String getLocation() {
 		return location;
 	}
+	
 	/**
 	 * @param location the location to set
 	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
 	/**
 	 * @return the contact
 	 */
 	public int getContact() {
 		return contact;
 	}
+	
 	/**
 	 * @param contact the contact to set
 	 */
@@ -132,9 +144,5 @@ public class Program {
 		return "Program [id=" + id + ", nomeP=" + nomeP + ", description=" + description + ", location=" + location
 				+ ", contact=" + contact + ", vagas=" + vagas + ", type=" + type + "]";
 	}
-
 	
-	
-
-
 }

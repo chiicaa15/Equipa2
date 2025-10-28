@@ -2,6 +2,7 @@
  * 
  */
 package Voluntariado;
+import java.util.List;
 import java.util.Scanner;
 
 import org.hibernate.Session;
@@ -13,7 +14,9 @@ public class Main {
 		ProgramManager manager = new ProgramManager();
 		Scanner input = new  Scanner(System.in);
 		manager.setup();
-		
+
+	
+	
 		boolean continuar= true;
 		int opcao;
 		while (continuar) {
@@ -75,31 +78,33 @@ public class Main {
 				
 			case 6:
 				manager.printUsers();
-				
 				break;
-			case 7:System.out.println("Insira o nome do programa: ");
-			String nomeP = input.nextLine();
-			
-			System.out.println("Insira uma descrição: ");
-			String description = input.nextLine();
-			
-			System.out.println("Insira a localização do programa: ");
-			String location = input.nextLine();
-			
-			System.out.println("Insira o contacto responsável: ");
-			int contact = input.nextInt();
-			input.nextLine();
-			
-			System.out.println("Insira a que tipo o programa pertence: ");
-			String typeN= input.nextLine();
-			
-			System.out.println("Insira as vagas que o programa tem: ");
-			int vagas = input.nextInt();
-			
-			//chamar o método
-			Program p = new Program (nomeP, description, location, contact, vagas);
-			manager.criarPrograma( p, typeN);
-			break;
+          
+			case 7:
+          
+        System.out.println("Insira o nome do programa: ");
+        String nomeP = input.nextLine();
+
+        System.out.println("Insira uma descrição: ");
+        String description = input.nextLine();
+
+        System.out.println("Insira a localização do programa: ");
+        String location = input.nextLine();
+
+        System.out.println("Insira o contacto responsável: ");
+        int contact = input.nextInt();
+        input.nextLine();
+
+        System.out.println("Insira a que tipo o programa pertence: ");
+        String typeN= input.nextLine();
+
+        System.out.println("Insira as vagas que o programa tem: ");
+        int vagas = input.nextInt();
+
+        //chamar o método
+        Program p = new Program (nomeP, description, location, contact, vagas);
+        manager.criarPrograma( p, typeN);
+        break;
 			
 			case 8:
 				manager.imprimirProgramas();
@@ -124,6 +129,9 @@ public class Main {
 			
 
 		}
+
 	}
+
+	
 }
 	

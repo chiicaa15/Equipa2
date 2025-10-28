@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?> 
  <!DOCTYPE hibernate-configuration PUBLIC 
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"> 
+        "-//Hibernate/Hibernate Configuration DTD 6.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-configuration-6.0.dtd"> 
     <!--  
    Root element of the Hibernate configuration file. 
   It defines all settings needed to create the SessionFactory, 
@@ -41,11 +41,12 @@ name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="connection.username">root</property> 
      
     <!-- Set the password - write the pwd you choose when installing MySQL -->  
-    <property name="connection.password">Francisca123</property> 
+    <property name="connection.password">Sofia123</property> 
      
      <!-- ============================== --> 
     <!--  Hibernate Behavior Settings   --> 
     <!-- ============================== --> 
+     
      
     <!-- 
       Controls how Hibernate automatically manages database tables. 
