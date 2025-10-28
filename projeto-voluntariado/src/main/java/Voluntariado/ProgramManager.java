@@ -86,7 +86,7 @@ public class ProgramManager {
 		
 
 	
-	public List listarTProgramas() {
+	public List imprimirProgramas() {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		
 		try (Session session = factory.openSession()){

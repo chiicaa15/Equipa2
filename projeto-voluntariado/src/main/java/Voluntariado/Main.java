@@ -79,7 +79,7 @@ public class Main {
 				break;
 				
 			case 4:
-				List <Program> list = manager.listarTProgramas();
+				List <Program> list = manager.imprimirProgramas();
 				
 				if (list.isEmpty()) {
 					System.out.println("De momento não existe nenhum programa.");
