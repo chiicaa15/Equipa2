@@ -8,14 +8,13 @@ import jakarta.persistence.*;
  * 
  */
 @Entity
-@Table(name="Programs")
+@Table(name="Programas")
 public class Program {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "program_id")
 	private Long id;
-	@Column(nullable = false)
+	
 	private String nomeP;
 	private String description;
 	private String location;
@@ -25,6 +24,9 @@ public class Program {
 	private Type type;
 	private int vagas;
 	
+	@ManyToOne
+	@JoinColumn(name="tipo_id")
+	private Type type;
 	/**
 	 * @param nomeP
 	 * @param description
@@ -32,14 +34,15 @@ public class Program {
 	 * @param contact
 	 * @param type
 	 */
-
-	public Program(String nomeP, String description, String location, int contact, Type type, int vagas) {
-
+	public Program() {
+		
+	}
+	
+	public Program(String nomeP, String description, String location, int contact, int vagas) {
 		this.nomeP = nomeP;
 		this.description = description;
 		this.location = location;
 		this.contact = contact;
-		this.type = type;
 		this.vagas= vagas;
 	}
 	
@@ -50,44 +53,6 @@ public class Program {
 	public Long getId() {
 		return id;
 	}
-
-
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-
-
-	/**
-	 * @return the type
-	 */
-	public Type getType() {
-		return type;
-	}
-
-
-
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(Type type) {
-		this.type = type;
-	}
-
-
-
-	/**
-	 * @return the tipo
-	 */
-	public Type getTipo() {
-		return type;
-	}
-
-
 	/**
 	 * @return the vagas
 	 */
@@ -159,13 +124,25 @@ public class Program {
 		this.contact = contact;
 	}
 	
+	
+	/**
+	 * @return the type
+	 */
+	public Type getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
-		return "Program [nomeP=" + nomeP + ", description=" + description + ", location=" + location + ", vagas="+ vagas +", contact=" + contact + "]";
-	}
-	
-	public Program() {
-		
+		return "Program [id=" + id + ", nomeP=" + nomeP + ", description=" + description + ", location=" + location
+				+ ", contact=" + contact + ", vagas=" + vagas + ", type=" + type + "]";
 	}
 	
 }
