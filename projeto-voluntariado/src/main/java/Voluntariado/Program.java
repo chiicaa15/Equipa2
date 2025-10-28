@@ -23,7 +23,6 @@ public class Program {
 	@JoinColumn(name="tipo_id", nullable = false) //foreign key
 	private Type type;
 	private int vagas;
-
 	/**
 	 * @param nomeP
 	 * @param description
