@@ -3,6 +3,7 @@
  */
 package Voluntariado;
 import java.util.Scanner;
+import java.util.List;
 
 import org.hibernate.Session;
 /**
@@ -77,9 +78,32 @@ public class Main {
 				break;
 				
 				
-			case 5:
-				continuar=false;
-				break;
+            case 4:
+                manager.printPrograms();
+                break;
+
+            case 5:
+                System.out.println("Pesquisar programas.");
+                System.out.print("Insira o tipo do programa (ou deixe vazio): ");
+                String searchType = input.nextLine();
+                System.out.print("Insira o nome do parceiro (ou deixe vazio): ");
+                String searchPartner = input.nextLine();
+
+                List<Program> results = manager.searchProgram(searchType, searchPartner);
+
+                System.out.println("\n=== Resultados da pesquisa ===");
+                if (results.isEmpty()) {
+                    System.out.println("Nenhum programa encontrado.");
+                } else {
+                    for (Program p : results) {
+                        System.out.println(p);
+                    }
+                }
+                break;
+
+            case 6:
+                continuar = false;
+                break;
 				
 			default: 
 				System.out.println("Opção não existe");
