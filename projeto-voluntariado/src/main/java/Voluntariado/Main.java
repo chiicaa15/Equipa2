@@ -16,13 +16,17 @@ public class Main {
 		
 		boolean continuar= true;
 		int opcao;
-		while (continuar=true) {
+		while (continuar) {
 			System.out.println("1- Criar conta como gestor");
 			System.out.println("2- Criar conta como estudante");
-			System.out.println("3-Criar um tipo de programa");
-			System.out.println("4-Criar programa");
-			System.out.println("5- ");
-			System.out.println("7-Sair");
+			System.out.println("3- Criar um tipo de programa");
+			System.out.println("4- Imprimir tipos");
+			System.out.println("5- Procurar um tipo de programa");
+			System.out.println("6- Imprimir todos os utilizadores");
+			System.out.println("7- Criar programa");
+			System.out.println("8- Imprimir todos os programas existentes");
+			System.out.println("9- Mudar localização do programa");
+			System.out.println("10- Sair");
 			
 			opcao= input.nextInt();
 			input.nextLine();
@@ -56,26 +60,61 @@ public class Main {
 				String nomeTipo=input.nextLine();
 				Type type= new Type(nomeTipo);
 				manager.adicionarType(type);
+				
 				break;
 				
 			case 4:
 				manager.printType();
-				System.out.println("Escolha um tipo");
-				String tipo=input.nextLine();
 				
-				System.out.println("Insira um nome: ");
-				String nomeP=input.nextLine();
-				System.out.println("Insira uma descrição: ");
-				String descricao= input.nextLine();
-				System.out.println("Insira uma localização: ");
-				String localizacao=input.nextLine();
-				System.out.println("Insira o contacto: ");
-				int contacto= input.nextInt();
-				System.out.println("Insira número de vagas: ");
-				int vagas=input.nextInt();
+				break;
+			case 5: 
+				System.out.println("Insira o tipo que procura");
+				nomeTipo=input.nextLine();
+				manager.pesquisarTipo(nomeTipo);
 				break;
 				
-			case 5:
+			case 6:
+				manager.printUsers();
+				
+				break;
+			case 7:System.out.println("Insira o nome do programa: ");
+			String nomeP = input.nextLine();
+			
+			System.out.println("Insira uma descrição: ");
+			String description = input.nextLine();
+			
+			System.out.println("Insira a localização do programa: ");
+			String location = input.nextLine();
+			
+			System.out.println("Insira o contacto responsável: ");
+			int contact = input.nextInt();
+			input.nextLine();
+			
+			System.out.println("Insira a que tipo o programa pertence: ");
+			String typeN= input.nextLine();
+			
+			System.out.println("Insira as vagas que o programa tem: ");
+			int vagas = input.nextInt();
+			
+			//chamar o método
+			Program p = new Program (nomeP, description, location, contact, vagas);
+			manager.criarPrograma( p, typeN);
+			break;
+			
+			case 8:
+				manager.imprimirProgramas();
+				break;
+				
+			case 9:
+				System.out.println("Qual o nome do programa");
+				String nomePrograma= input.nextLine();
+				System.out.println("Insira a nova localização");
+				String novaLocalizacao=input.nextLine();
+				manager.setLocalizacaoPrograma(nomePrograma, novaLocalizacao);
+				break;
+				
+			case 10: 
+				System.out.println("A sair...");
 				continuar=false;
 				break;
 				
@@ -83,10 +122,7 @@ public class Main {
 				System.out.println("Opção não existe");
 			}
 			
-		
-			manager.setup();
-			manager.create();
-			manager.exit();
+
 		}
 	}
 }

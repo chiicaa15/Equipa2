@@ -10,13 +10,7 @@ import jakarta.persistence.*;
 @DiscriminatorValue("Student")
 public class Student extends User {
 	private int num;
-
-	/**
-	 * @param nome
-	 * @param email
-	 * @param password
-	 * @param num
-	 */
+	
 	
 	public Student() {
 		

@@ -34,13 +34,12 @@ public class Program {
 		
 	}
 	
-	public Program(String nomeP, String description, String location, int contact, int vagas, Type type) {
+	public Program(String nomeP, String description, String location, int contact, int vagas) {
 		this.nomeP = nomeP;
 		this.description = description;
 		this.location = location;
 		this.contact = contact;
 		this.vagas= vagas;
-		this.type=type;
 	}
 	
 	/**
