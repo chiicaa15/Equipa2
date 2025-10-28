@@ -121,7 +121,7 @@ public class ProgramManager {
 		try (Session session = sessionFactory.openSession()) {
 	        session.beginTransaction();
 
-	        Query<Type> query = session.createQuery("from Type t where t.type = :name", Type.class);// 
+	        Query<Type> query = session.createQuery("from Type t where t.type = :name", Type.class);// consulta para buscar objetos da entidade Type
 	        query.setParameter("name", tipo);
 	        List<Type> result = query.list(); //executa o query e devolve a lista de objetos encontrados na classe Type
 	        for (Type t : result) {
@@ -205,9 +205,9 @@ public class ProgramManager {
 	        tx = session.beginTransaction(); //Inicia transação
 
 	        // Procurar o programa pelo nome	
-	        Query<Program> query = session.createQuery("from Program where nomeP = :nome", Program.class);
-	        query.setParameter("nome", nomePrograma);
-	        List<Program> programas = query.getResultList();
+	        Query<Program> query = session.createQuery("from Program where nomeP = :nome", Program.class);//consulta para buscar objetos da entidade Program
+	        query.setParameter("nome", nomePrograma); // define o valor do parametro (nome) na query e substitui pelo conteúdo da variavel nomePrograma
+	        List<Program> programas = query.getResultList();// criar um query(questionar base de dados) para selecionar todos os objetos da classe Program
 
 	        if (!programas.isEmpty()) {
 	            Program p = programas.get(0); // pega o primeiro resultado (caso haja duplicados)
