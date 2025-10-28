@@ -23,10 +23,7 @@ public class Program {
 	@JoinColumn(name="tipo_id", nullable = false) //foreign key
 	private Type type;
 	private int vagas;
-	
-	@ManyToOne
-	@JoinColumn(name="tipo_id")
-	private Type type;
+
 	/**
 	 * @param nomeP
 	 * @param description
